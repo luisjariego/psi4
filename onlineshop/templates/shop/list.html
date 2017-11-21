@@ -1,0 +1,47 @@
+{% extends 'shop/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}
+	{% if category %}
+		{{ category.catName }}
+	{% else %}
+		Products
+	{% endif %}
+{% endblock %}
+
+{% block main %} {% endblock %}
+
+{% block body_block %}
+	
+	<br>
+	<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+	<br>
+	<div class="title"> 
+		{% if category %}
+			<h2> {{ category.catName }} </h2>
+		{% else %}
+			<h2>Products</h2>
+		{% endif %}
+	</div>
+	<hr>	
+	{% if products %}
+		<div id="product-main-container">
+		{% for product in products %}
+			<div class='single-product-container product'>
+				<a href="{% url 'product_detail' product.id product.prodSlug %}">
+					<figure class="fig">		
+						<img src= "{{ MEDIA_URL}}/{{product.image.url}}">
+					</figure>
+					{{ product.prodName }}
+				</a>
+				<br>
+				{{product.price}}$
+			</div>
+		{% endfor %}
+		</div>
+	{% else %}
+		<strong> No products yet!</strong>
+	{% endif %}
+
+{% endblock %}

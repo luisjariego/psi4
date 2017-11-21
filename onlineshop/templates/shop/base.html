@@ -1,0 +1,91 @@
+	
+{% load staticfiles %}
+
+{% block extra_css %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Luis Jariego, David Nevado">
+	<link rel="stylesheet" type="text/css"
+		href='{% static "css/mycss.css" %}' />
+	<link rel="stylesheet" type="text/css"
+		href='{% static "vendor/bootstrap/css/bootstrap.min.css" %}' />
+	<!--
+	<link rel="stylesheet" type="text/css"
+		href='{% static "vendor/bootstrap/css/bootstrap.min.css.map" %}' />
+	-->
+	<link rel="stylesheet" type="text/css"
+		href='{% static "vendor/simple-sidebar.css" %}' />
+{% endblock extra_css %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OnlineShop - {% block title %}{% endblock %}</title>
+		
+	</head>
+
+	<body>
+		<div id="wrapper">
+
+			 <!-- Sidebar -->
+			<div id="sidebar-wrapper">
+				{% block sidebar %}
+				 <!-- Sidebar -->
+					<ul class="sidebar-nav">
+						<li class="sidebar-brand"> <a href="{% url 'product_list' %}"> All products </a></li>
+						{% for cat in categories %}
+							<li class="sidebar-brand"> <a href="{% url 'product_list_by_category' cat.catSlug %}"> {{cat.catName}} </a> </li>
+						{% endfor %}
+						<hr>
+						<li class="sidebar-brand"> <a href="{% url 'about' %}"> About </a></li>
+					</ul>
+				{% endblock %}
+			</div>
+	        	<!--
+				<div>
+					{% block main %}{% endblock %}
+				</div>
+			-->
+			<div id="page-content-wrapper">
+	            		<div class="container-fluid">
+					<div id="header-wrap">
+						<header>
+							{% block header %} 
+								<h3><a href="{% url 'product_list' %}"> Household Appliances Shop </a></h3>
+							{% endblock %}
+						</header>
+			
+						<div id="cart-wrap">
+							{% block shoppingcart %}
+								<h6>Your cart is empty</h6>
+							{% endblock %}
+						</div>
+					</div>
+	            			<div>
+						{% block body_block %}{% endblock %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="footer">
+			<hr>
+			David Nevado & Luis Jariego - 2017 Copyright © All rights reserved
+			<br>
+		</div>
+		<!-- Bootstrap core JavaScript -->
+		<script src='{% static "vendor/jquery/jquery.min.js" %}'></script>
+		<script src='{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}'></script>
+
+		<!-- Menu Toggle Script -->
+		<script>
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("toggled");
+			});
+		</script>
+	</body>
+</html>
