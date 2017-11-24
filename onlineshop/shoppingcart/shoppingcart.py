@@ -20,7 +20,8 @@ class ShoppingCart(object):
 			else:
 				self.cart[product_id]['units'] += units
 		else:
-			self.cart[product_id] = {'units': units, 'price': str(product.price)}
+			self.cart[product_id] = {'units': units, 'price': str(product.price),
+									'prodName': product.prodName}
 		self.saveCart()
 
 	def saveCart(self):

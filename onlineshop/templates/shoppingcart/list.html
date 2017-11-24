@@ -1,0 +1,46 @@
+{% extends 'shop/base.html' %}
+
+{% load staticfiles %}
+
+
+{% block title %}
+	{% if category %}
+		{{ category.catName }}
+	{% else %}
+		Products
+	{% endif %}
+{% endblock %}
+
+{% block main %} {% endblock %}
+
+{% block body_block %}
+	<h1>Your chopping cart</h1>
+	<table class="cart">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Unit price</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for prod in shoppingcart.cart%}
+			<tr>
+				<td></td>
+				<td>{{prod.prodName}}</td>
+				<td>{{prod.units}}</td>
+				<td>{{prod.price}}</td>
+				<td>{{prod.total_price}}</td>
+			</tr>
+			{% endfor %}
+			<tr class="total">
+				<td>Total</td>
+				<td colspan="4"></td>
+				<td class="num">{{shoppingcart.get_total_price}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+{% endblock %}
