@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from shop.models import Category, Product
 from shop.forms import CategoryForm, ProductForm
+from shoppingcart.forms import CartAddProductForm
 
 # Create your views here.
 def about(request):
@@ -29,6 +30,7 @@ def product_list(request, catSlug=None):
 def product_detail(request, id, prodSlug):
 	categories = Category.objects.all()
 	product = Product.objects.get(id = id)
-	return render(request, 'shop/detail.html', {'product': product, 'stock': range( product.stock +1)})
+	form = CartAddProductForm() #stock = product.stock
+	return render(request, 'shop/detail.html', {'product': product, 'form': form})
 
 
