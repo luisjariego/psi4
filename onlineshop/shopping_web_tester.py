@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import unittest, time, os
@@ -40,28 +40,31 @@ class onLineShopTester(unittest.TestCase):
     confirm_order_url = base_url + "placeorder/confirm_order/"
     addCategoryPath = "shop/category/add/"
     addProductPath  = "shop/product/add/"
-    catList     = ["Angels", "Butterflies", "Kokopelli"]
-    productDict = {catList[0]: ["angel-tattoo-art",
-                 "black-angel-tattoo",
-                 "male-angel-tattoo",
-                 "angel-tattoo-design-3",
-                 "cute-angel-design",
-                 "praying-angel-tattoo"],
-                   catList[1]: ["butterflies-tattoos",
-                 "butterfly-swirls-tattoo",
-                 "purple-butterfly-tattoo",
-                 "butterfly-stars-tat",
-                 "butterfly-tattoo-3",
-                 "yellow-butterfly-tattoo"],
-                  catList[2]: ["dancing-kokopelli",
-                 "kokopelli-dancing",
-                 "kokopelli",
-                 "kokopelli-music",
-                 "kokopelli-tattoo-5",
-                 "kokopelli-tattoo-design"]
-                }
+    catList = ["Microwave ovens","Washing machines","Refrigerators"]
+    washing_machines = ["Bosch WAQ 28468 LCD Display A+++",
+                  "Beko WTE6511BW 39L A+++",
+                  "Balay 3TS976BA A+++",
+                  "Siemens WM14Q468ES Digital display A+++",
+                  "Kenmore 28132 Top Load Washer in White",
+                  "Kenmore Elite 51993 Wide Pedestal Washer"]
+    microwaves = ["Microwave TAURUS 970.930",
+                  "Taurus 970921000 LUXUS GRILL",
+                  "Samsung GE731 K microwave",
+                  "Whirlpool AMW 160 Grill",
+                  "Samsung MS11K3000AS Countertop Microwave",
+                  "Hamilton Beach 900W Microwave"]
+    refrigerators = ["Samsung Refrigerator in Stainless Steel",
+                     "Frigidaire Refrigerator in Black Stainless Steel",
+                     "American fridge - Samsung RS7528THCSL A++ Display Inox",
+                     "Balay fridge 3FC1601B 186cm A++ LEDs",
+                     "Danby 120 Can Beverage Center",
+                     "Della Mini Compact Refrigerator Freezer White"]
+    productDict = {"Microwave ovens":  microwaves, 
+        "Washing machines": washing_machines, 
+        "Refrigerators": refrigerators
+        }
     chromeDriver = "../ficheros_psi3/chromedriver"
-    imagesPath = "/home/roberto/Docencia/PSI/psi_2017-18/Assigns/assign3/onLineShop/static/"
+    imagesPath = os.path.join( os.path.dirname(os.path.abspath(__file__)), "media/")
     purchaseCost = "136.40"
 
     def setUp(self):

@@ -28,7 +28,11 @@
 		<tbody>
 			{% for key, value in shoppingcart.cart.items %}
 			<tr>
-				<td>beacon</td>
+				<td>
+					<a href=#>
+						<img src="{{ MEDIA_URL}}/{{value.image}}"
+					</a>
+				</td>
 				<td>{{ value.prodName }}</td>
 				<td>{{ value.units}}</td>
 				<td>{{ value.price}}</td>
