@@ -8,6 +8,7 @@ from forms import CartAddProductForm
 
 def shoppingcart_list(request):
 	_shoppingcart = ShoppingCart(request)
+	print _shoppingcart.cart
 	return render(request, 'shoppingcart/list.html',
 					{'shoppingcart': _shoppingcart})
 

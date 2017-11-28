@@ -26,13 +26,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for prod in shoppingcart.cart%}
+			{% for key, value in shoppingcart.cart.items %}
 			<tr>
-				<td></td>
-				<td>{{prod.prodName}}</td>
-				<td>{{prod.units}}</td>
-				<td>{{prod.price}}</td>
-				<td>{{prod.total_price}}</td>
+				<td>beacon</td>
+				<td>{{ value.prodName }}</td>
+				<td>{{ value.units}}</td>
+				<td>{{ value.price}}</td>
+				<td>{{ value.total_price}}</td>
 			</tr>
 			{% endfor %}
 			<tr class="total">
