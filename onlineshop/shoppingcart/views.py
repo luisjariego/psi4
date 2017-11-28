@@ -9,7 +9,8 @@ from forms import CartAddProductForm
 
 def shoppingcart_list(request):
 	_shoppingcart = ShoppingCart(request)
-	print _shoppingcart.cart
+	for i in _shoppingcart: #TODO NECESARIO ITERAR PARA QUE MUESTRE EL TOTAL PRICE?
+		print i
 	return render(request, 'shoppingcart/list.html',
 					{'shoppingcart': _shoppingcart})
 
@@ -35,5 +36,13 @@ def shoppingcart_add(request, product_id):
 	return redirect('shoppingcart_list')
 
 def shoppingcart_remove(request, product_id):
-	
+	shoppingcart = ShoppingCart(request)
+
+	try:
+		product = Product.objects.get(id = product_id);
+	except Product.DoesNotExist:
+		product = None 
+
+	shoppingcart.removeProduct(product=product)
 	return redirect('shoppingcart_list')
+

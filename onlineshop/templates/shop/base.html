@@ -61,7 +61,7 @@
 			
 						<div id="cart-wrap">
 							{% block shoppingcart %}
-								<h6>Your cart is empty</h6>
+								<h6><a href="{% url 'shoppingcart_list' %}">Your cart is empty</a></h6>
 							{% endblock %}
 						</div>
 					</div>
