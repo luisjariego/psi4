@@ -26,12 +26,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [	
     url(r'^admin/', admin.site.urls),
-    url(r'^shop/', include('shop.urls')),
-    url(r'^base/', include('shop.urls')),
     url(r'^about', shopviews.about, name="about"),
-    url(r'^list/$', cartviews.shoppingcart_list, name="shoppingcart_list"),
-    url(r'^add/(?P<product_id>\d+)/$', cartviews.shoppingcart_add, name="shoppingcart_add"),
-    url(r'^remove/(?P<product_id>\d+)/$', cartviews.shoppingcart_remove, name="shoppingcart_remove"),
+    url(r'^list/', include('shoppingcart.urls')),
     url(r'', include('shop.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

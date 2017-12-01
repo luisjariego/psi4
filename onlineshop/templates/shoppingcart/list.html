@@ -2,7 +2,6 @@
 
 {% load staticfiles %}
 
-
 {% block title %} ShoppingCart {% endblock %}
 
 {% block main %} {% endblock %}
@@ -10,6 +9,7 @@
 {% block body_block %}
 	<h1>Your chopping cart</h1>
 	<table class="cart">
+		<h1>HOLA {{ MEDIA_URL }}</h1>
 		<thead>
 			<tr>
 				<th>Image</th>
@@ -25,7 +25,7 @@
 			<tr>
 				<td>
 					<a href="{% url 'product_detail' value.product.id value.product.prodSlug%}">
-						<img src="{{ MEDIA_URL}}/{{value.product.image}}"/>
+						<img src="{{value.product.image.url}}"/>
 					</a>
 				</td>
 				<td><a href="{% url 'product_detail' value.product.id value.product.prodSlug%}">{{ value.prodName }}</a></td>
