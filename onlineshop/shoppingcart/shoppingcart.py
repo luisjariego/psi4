@@ -14,14 +14,15 @@ class ShoppingCart(object):
 	def addProduct(self, product, units=1, update_units=False):
 		#dictionary keys should be strings
 		product_id = str(product.id)
-		if product_id in self.cart:
-			if update_units==True:
-				self.cart[product_id]['units'] = units
+		if units>0 and units<product.stock: #TODO mensaje de no hay stock en otro caso?
+			if product_id in self.cart:
+				if update_units==True:
+					self.cart[product_id]['units'] = units
+				else:
+					self.cart[product_id]['units'] += units
 			else:
-				self.cart[product_id]['units'] += units
-		elif units>0:
-			self.cart[product_id] = {'units': units, 'price': str(product.price),
-									'prodName': product.prodName, 'total_price': 0 } #'image': product.image
+				self.cart[product_id] = {'units': units, 'price': str(product.price),
+										'prodName': product.prodName, 'total_price': 0 } #'image': product.image
 		self.saveCart()
 
 	def saveCart(self):
