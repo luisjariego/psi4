@@ -30,7 +30,7 @@ def product_list(request, catSlug=None):
 def product_detail(request, id, prodSlug):
 	categories = Category.objects.all()
 	product = Product.objects.get(id = id)
-	form = CartAddProductForm() #stock = product.stock
+	form = CartAddProductForm(stock = product.stock) #stock = product.stock
 	return render(request, 'shop/detail.html', {'product': product, 'form': form})
 
 

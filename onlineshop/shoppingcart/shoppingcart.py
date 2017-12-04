@@ -14,7 +14,7 @@ class ShoppingCart(object):
 	def addProduct(self, product, units=1, update_units=False):
 		#dictionary keys should be strings
 		product_id = str(product.id)
-		if units>0 and units<=product.stock: #TODO mensaje de no hay stock en otro caso?
+		if units>0 and units<=product.stock:
 			if product_id in self.cart:
 				if update_units==True:
 					self.cart[product_id]['units'] = units

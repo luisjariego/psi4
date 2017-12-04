@@ -65,7 +65,7 @@ class onLineShopTester(unittest.TestCase):
     username    = "alumnodb"
     passwd      = "alumnodb"
     #base_url    = "https://rocky-inlet-76734.herokuapp.com/"
-    base_url     = "https://dry-river-83015.herokuapp.com/"
+    base_url     = "https://quiet-scrubland-14247.herokuapp.com/"
     admin_url    = base_url + "admin/"
     addCategoryPath = "shop/category/add/"
     addProductPath  = "shop/product/add/"
