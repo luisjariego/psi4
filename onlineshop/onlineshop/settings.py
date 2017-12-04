@@ -30,7 +30,7 @@ SECRET_KEY = '*&t)=ur=pr!4s3hp)p@hwaa&(jx4bd(-jvogx47n4&@e5(9c^y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'dry-river-83015.herokuapp.com', u'127.0.0.1']
+ALLOWED_HOSTS = [u'quiet-scrubland-14247.herokuapp.com', u'127.0.0.1']
 
 
 # Application definition

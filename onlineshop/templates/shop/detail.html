@@ -16,7 +16,7 @@
 	
 	<p><a href="{% url 'product_list_by_category' product.category.catSlug %}"> {{product.category.catName}} </a></p>
 	<div class="det-img">
-		<img src="{{ MEDIA_URL}}/{{product.image.url}}"><br>
+		<img src="/{{product.image.url}}"><br>
 	</div>
 	
 	<h4> Description </h5>

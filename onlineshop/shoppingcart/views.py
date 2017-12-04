@@ -9,10 +9,9 @@ from forms import CartAddProductForm
 
 def shoppingcart_list(request):
 	_shoppingcart = ShoppingCart(request)
-	for i in _shoppingcart: #TODO NECESARIO ITERAR PARA QUE MUESTRE EL TOTAL PRICE?
-		print i
 	return render(request, 'shoppingcart/list.html',
-					{'shoppingcart': _shoppingcart})
+					{'shoppingcart': _shoppingcart,
+					'total price': _shoppingcart.get_total_price()})
 
 def shoppingcart_add(request, product_id):
 	if request.method == 'POST':
