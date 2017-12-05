@@ -34,7 +34,7 @@ class onLineShopTester(unittest.TestCase):
     #base_url    = "https://rocky-inlet-76734.herokuapp.com/"
     #base_url    = "https://pure-bayou-13155.herokuapp.com/"
     base_url     = "https://quiet-scrubland-14247.herokuapp.com/"
-    #base_url = "http://127.0.0.1:8000"
+    base_url = "http://127.0.0.1:8000"
     admin_url    = base_url + "admin/"
     shoppingcart_url = base_url + "shoppingcart/list/"
     create_order_url      = base_url + "placeorder/create_order/"

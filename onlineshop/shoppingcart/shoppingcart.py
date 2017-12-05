@@ -53,6 +53,9 @@ class ShoppingCart(object):
 	def get_total_price(self):
 		return sum(item['total_price'] for item in self)
 
+	def get_total_units(self):
+		return sum(item['units'] for item in self)
+
 	def clear(self):
 		del self.session[self.cartKey]
 		self.session.modified = True

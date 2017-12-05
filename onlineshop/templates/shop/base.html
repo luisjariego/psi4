@@ -61,7 +61,13 @@
 			
 						<div id="cart-wrap">
 							{% block shoppingcart %}
-								<h6><a href="{% url 'shoppingcart_list' %}">Your cart is empty</a></h6>
+								<h6><a href="{% url 'shoppingcart_list' %}">
+									{% if shoppingcart.cart.items|length > 0 %}
+										{{shoppingcart.get_total_units}} units: {{shoppingcart.get_total_price}}€
+									{% else %}
+										Your cart is empty
+									{% endif %}
+								</a></h6>
 							{% endblock %}
 						</div>
 					</div>
