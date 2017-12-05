@@ -28,7 +28,21 @@
 					</a>
 				</td>
 				<td><a href="{% url 'product_detail' value.product.id value.product.prodSlug%}">{{ value.prodName }}</a></td>
-				<td>{{ value.units}}</td>
+				<td>
+					{{ value.units}}
+					<form method="post" action="{% url 'shoppingcart_add' value.product.id %}">
+						{% csrf_token %}
+					        {% for hidden in form.hidden_fields %}
+					            {{ hidden }}
+					        {% endfor %}
+					        {% for field in form.visible_fields %}
+					            {{ field.errors }}
+					            {{ field.help_text }}
+					            {{ field }}
+					        {% endfor %}
+						<input type="submit" name="submit" class="btn btn-secondary" value="Update"/>
+					</form>
+				</td>
 				<td><a href="{% url 'shoppingcart_remove' value.product.id %}"> <input class="btn" type="button" name="remove" value="Remove"></a></td>
 				<td>{{ value.price}}</td>
 				<td>{{ value.total_price}}</td>

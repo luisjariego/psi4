@@ -210,7 +210,7 @@ class shoppingCartTest(TestCase):
         from selenium import webdriver
         import time
         driverPath=os.path.join(
-            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
             'ficheros_psi3/chromedriver')
         driver = webdriver.Chrome(driverPath)
         driver.get("file:///tmp/delete.html")

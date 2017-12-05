@@ -11,7 +11,8 @@ def shoppingcart_list(request):
 	_shoppingcart = ShoppingCart(request)
 	return render(request, 'shoppingcart/list.html',
 					{'shoppingcart': _shoppingcart,
-					'total price': _shoppingcart.get_total_price()})
+					'total price': _shoppingcart.get_total_price(),
+					'form':CartAddProductForm() })
 
 def shoppingcart_add(request, product_id):
 	if request.method == 'POST':
