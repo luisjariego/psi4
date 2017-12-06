@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} Checkout {% endblock %}
+
+{% block main %} {% endblock %}
+
+{% block body_block %}
+	<h1>Checkout</h1>
+	<div class="order-lines">
+		<div class="your-order title">
+			{% if order_id %}
+				<h3>Your order has been processed with id '<strong>{{order_id}}</strong>'</h3>
+			{% else %}
+				<h3>There has been an error with your order.</h3>
+			{% endif %}
+		</div>
+	</div>
+	<br><br>
+
+{% endblock %}

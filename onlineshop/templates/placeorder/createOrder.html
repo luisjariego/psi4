@@ -1,0 +1,37 @@
+{% extends 'shop/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} Checkout {% endblock %}
+
+{% block main %} {% endblock %}
+
+{% block body_block %}
+	<h1>Checkout</h1>
+	<div class="order-lines">
+		<div class="your-order">
+			<h3>Your order</h3>
+				<table>
+				{% for key, value in items %}
+					<tr>
+					<td>{{ value.product.prodName }} <strong>({{value.units}}x)</strong></td> <td>{{value.price}}$</td>
+					</tr>
+				{% endfor %}
+					<tr><td><h5><strong>Total</strong></h5></td><td><h6><strong>{{total_price}}$</strong></h6></td></tr>
+				</table>
+		</div>
+	</div>
+	<form class="order grupo-form" action="{% url 'confirm_order' %}" method="post" class="order-form">
+		{% csrf_token %}
+		{% for hidden in form.hidden_fields %}
+		    {{ hidden }}
+		{% endfor %}
+		{% for field in form.visible_fields %}
+		    {{ field.errors }}
+		    {{ field.label }}<br>
+		    <p>{{ field }}</p>
+		{% endfor %}
+		<p><input type="submit" value="Place order"></p>
+    	</form>
+
+{% endblock %}

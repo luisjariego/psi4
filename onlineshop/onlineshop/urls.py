@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^about', shopviews.about, name="about"),
     url(r'^cart/', include('shoppingcart.urls')),
+    url(r'^orders/', include('placeorder.urls')),
     url(r'', include('shop.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

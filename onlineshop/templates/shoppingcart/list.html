@@ -55,7 +55,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<form action="#" method="post">
+	<form action="{% url 'create_order' %}" method="post">
+		{% csrf_token %}
 		<a href="{% url 'product_list' %}"><input class="btn" type="button" name="shop" value="Continue shopping"></a>
 		<input class="btn btn-secondary" type="submit" name="buy" value="Confirm">
 	</form>

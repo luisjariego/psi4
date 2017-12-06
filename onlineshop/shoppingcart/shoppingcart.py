@@ -59,5 +59,14 @@ class ShoppingCart(object):
 	def clear(self):
 		del self.session[self.cartKey]
 		self.session.modified = True
+	
+	def updateStock(self):
+		product_ids = self.cart.keys()
+		products = Product.objects.filter(id__in=product_ids)
+		for product in products:
+			product.stock = product.stock - self.cart[str(product.id)]['units']
+			if product.stock <= 0:
+				product.availability = False
+			product.save()
 
 
