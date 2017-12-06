@@ -22,8 +22,11 @@ def confirmOrder(request):
 		form = OrderCreateForm(request.POST)
 	
 		if form.is_valid():
+			#Saves the order
 			order = form.save()
+			#Update stock and clear shoppingcart
 			_shoppingcart = ShoppingCart(request)
+			#TODO: OrderLine ????
 			_shoppingcart.updateStock()
 			_shoppingcart.clear()
 			id = order.id
