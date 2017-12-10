@@ -11,9 +11,9 @@ def shoppingcart_list(request):
 	_shoppingcart = ShoppingCart(request)
 	return render(request, 'shoppingcart/list.html',
 					{'shoppingcart': _shoppingcart,
-					'form':CartAddProductForm() })
+					'form':CartAddProductForm(stock=20) })
 
-def shoppingcart_add(request, product_id):
+def shoppingcart_add(request, product_id, update_units=False):
 	if request.method == 'POST':
 		shoppingcart = ShoppingCart(request)
 	
@@ -24,15 +24,17 @@ def shoppingcart_add(request, product_id):
 	
 		form = CartAddProductForm(request.POST)
 		units = 0
-		update_units = False
 	
 		if form.is_valid():
 			if product is not None:
 				units = form.cleaned_data['units']
-				update_units = form.cleaned_data['update']
+				#update_units = form.cleaned_data['update']
 	
 		shoppingcart.addProduct(product=product, units=units, update_units=update_units)
 	return redirect('shoppingcart_list')
+
+def shoppingcart_update(request, product_id):
+	return shoppingcart_add(request, product_id, True)
 
 def shoppingcart_remove(request, product_id):
 	shoppingcart = ShoppingCart(request)

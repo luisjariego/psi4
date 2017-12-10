@@ -9,5 +9,6 @@ urlpatterns = [
    url(r'^list$', views.shoppingcart_list, name="shoppingcart_list"),
    url(r'^$', views.shoppingcart_list, name="shoppingcart_list"),
    url(r'^add/(?P<product_id>\d+)/$', views.shoppingcart_add, name="shoppingcart_add"),
+   url(r'^update/(?P<product_id>\d+)/$', views.shoppingcart_update, name="shoppingcart_update"),
    url(r'^remove/(?P<product_id>\d+)/$', views.shoppingcart_remove, name="shoppingcart_remove"),
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

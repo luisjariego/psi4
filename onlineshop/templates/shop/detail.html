@@ -34,6 +34,7 @@
 	
 	<form method="post" action="{% url 'shoppingcart_add' product.id %}">
 		{% csrf_token %}
+			<label for='id_quantity'>Quantity</label>
 	        {% for hidden in form.hidden_fields %}
 	            {{ hidden }}
 	        {% endfor %}

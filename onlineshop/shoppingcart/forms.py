@@ -2,7 +2,7 @@
 from django import forms
 
 class CartAddProductForm(forms.Form):
-	units = forms.IntegerField(widget=forms.Select(), label="Quantity", help_text="Quantity:", required=True );
+	units = forms.IntegerField(widget=forms.Select(), label="Quantity", required=True );
 	update_units = forms.BooleanField(widget=forms.HiddenInput(), initial=False, required=False )
 	
 	def clean(self):

@@ -17,9 +17,9 @@ def populate():
 	# This might seem a little bit confusing, but it allows us to iterate
 	# through each data structure, and add the data to our models.
 	microwaves = [
-		{"prodName": "Microwave TAURUS 970.930",
-		"prodSlug": "TAURUS_970.930",
-		"image": "Microwave TAURUS 970.930.jpg",
+		{"prodName": "Microwave TAURUS 970930",
+		"prodSlug": "TAURUS_970930",
+		"image": "Microwave TAURUS 970930.jpg",
 		"description":"Equip your kitchen with Tauru's microwave oven Ready Grill. It will the most beloved tool in your household.",
 		"price": 49.90,
 		"stock": 1,

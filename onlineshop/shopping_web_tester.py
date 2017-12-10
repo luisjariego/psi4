@@ -2,6 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import unittest, time, os
+from django.template.defaultfilters import slugify
 try:
    from loremipsum import get_paragraphs
 except:
@@ -22,20 +23,20 @@ except:
 #from shop.models import Product
 
 class onLineShopTester(unittest.TestCase):
-    POPULATE      = True # set to True if you  want to populate the database
+    POPULATE      = False # set to True if you  want to populate the database
     ADDPRODUCT    = True # set to True if you  want to add
-                         # products to the shoppingcart
+                          # products to the shoppingcart
     REMOVEPRODUCT = False # set to True if you  want to remove
-                         # products from the shoppingcart
+                          # products from the shoppingcart
     CHECKOUT      = False # press checkout botton
     PLACEORDER    = False # place order. The END ;-)
     username    = "alumnodb"
     passwd      = "alumnodb"
     #base_url    = "https://rocky-inlet-76734.herokuapp.com/"
     #base_url    = "https://pure-bayou-13155.herokuapp.com/"
-    base_url     = "https://quiet-scrubland-14247.herokuapp.com/"
+    #base_url     = "https://quiet-scrubland-14247.herokuapp.com/"
     base_url = "http://127.0.0.1:8000"
-    admin_url    = base_url + "admin/"
+    admin_url    = base_url + "/admin/"
     shoppingcart_url = base_url + "shoppingcart/list/"
     create_order_url      = base_url + "placeorder/create_order/"
     confirm_order_url = base_url + "placeorder/confirm_order/"
@@ -48,7 +49,7 @@ class onLineShopTester(unittest.TestCase):
                   "Siemens WM14Q468ES Digital display A+++",
                   "Kenmore 28132 Top Load Washer in White",
                   "Kenmore Elite 51993 Wide Pedestal Washer"]
-    microwaves = ["Microwave TAURUS 970.930",
+    microwaves = ["Microwave TAURUS 970930",
                   "Taurus 970921000 LUXUS GRILL",
                   "Samsung GE731 K microwave",
                   "Whirlpool AMW 160 Grill",
@@ -109,7 +110,7 @@ class onLineShopTester(unittest.TestCase):
         self.find_element_by_id("id_catName",catName, waitFor)
         self.find_element_by_name("_save", waitFor)
 
-    def addProduct(self, cat, prodName, ext="jpg", price="1.1", stock="1", waitFor=1):
+    def addProduct(self, cat, prodName, ext="jpg", price="1.1", stock="10", waitFor=1):
         self.get_url(self.admin_url + self.addProductPath)
 
         select = Select(self.driver.find_element_by_id('id_category'))
@@ -193,7 +194,7 @@ class onLineShopTester(unittest.TestCase):
                 self.addCat(catName,1)
 
             #addProducts
-            counter =1
+            counter =2
             for catName in self.catList:
                 for prodName in self.productDict[catName]:
                     self.addProduct(catName,prodName,
@@ -205,10 +206,10 @@ class onLineShopTester(unittest.TestCase):
             self.seeHome(1)
 
         id1 = 1; id2 = 8; id3 = 15; id4=16
-        prodSlug1 = self.productDict[self.catList[0]][0]
-        prodSlug2 = self.productDict[self.catList[1]][1]
-        prodSlug3 = self.productDict[self.catList[2]][2]
-        prodSlug4 = self.productDict[self.catList[2]][3]
+        prodSlug1 = slugify(self.productDict[self.catList[0]][0])
+        prodSlug2 = slugify(self.productDict[self.catList[1]][1])
+        prodSlug3 = slugify(self.productDict[self.catList[2]][2])
+        prodSlug4 = slugify(self.productDict[self.catList[2]][3])
         if self.ADDPRODUCT:  #select several products
             self.selectProduct(id1, prodSlug1, units=2, waitFor=1)
             self.selectProduct(id2, prodSlug2, units=3, waitFor=1)

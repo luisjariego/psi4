@@ -30,7 +30,7 @@
 				<td><a href="{% url 'product_detail' value.product.id value.product.prodSlug%}">{{ value.prodName }}</a></td>
 				<td>
 					{{ value.units}}
-					<form method="post" action="{% url 'shoppingcart_add' value.product.id %}">
+					<form method="post" action="{% url 'shoppingcart_update' value.product.id %}">
 						{% csrf_token %}
 					        {% for hidden in form.hidden_fields %}
 					            {{ hidden }}
