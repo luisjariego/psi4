@@ -29,7 +29,8 @@ def confirmOrder(request):
 			_shoppingcart = ShoppingCart(request)
 			
 			for item in _shoppingcart:
-				OrderLine(order = order, product = item['product'], units = item['units'], pricePerUnit = item['price'])
+				orderline = OrderLine(order = order, product = item['product'], units = item['units'], pricePerUnit = item['price'])
+				orderline.save()
 			
 			_shoppingcart.updateStock()
 			_shoppingcart.clear()
