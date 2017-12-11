@@ -21,20 +21,11 @@ class Order(models.Model):
 	def save(self, *args, **kwargs):
 		super(Order, self).save(*args, **kwargs)
 
-	def getTotalCost():
+	def getTotalCost(self):
 		return sum(item.getProductCost() for item in OrderLine.objects.filter(order = self))
 
-	def __str__(self): #TODO cambiar
-		return self.firstName + " " + self.familyName
-	
-	#def getTotalCost():
-	#	for item in Orderline.OrderLine_set.all():
-	
-	#def getTotalCost():
-	#	orders = OrderLine.objects.filter(order = self)
-	#	total = 0
-	#	for item in orders:
-	#		total += item.getProductCost()
+	def __str__(self):
+		return self.firstName + " " + self.familyName + "-" + self.email
 			
 
 class OrderLine(models.Model):
@@ -46,9 +37,9 @@ class OrderLine(models.Model):
 	def save(self, *args, **kwargs):
 		super(OrderLine, self).save(*args, **kwargs)
 	
-	def getProductCost():
-		return units * pricePerUnit
+	def getProductCost(self):
+		return self.units * self.pricePerUnit
 	
-	def __str__(self): #TODO cambiar
-		return self.product.prodName
+	def __str__(self):
+		return self.product.prodName + "(x" + self.units + ")"
 

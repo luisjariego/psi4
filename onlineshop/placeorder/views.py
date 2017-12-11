@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from placeorder.models import Order
+from shop.models import Product
+from placeorder.models import Order, OrderLine
 from placeorder.forms import OrderCreateForm
 from shoppingcart.shoppingcart import ShoppingCart
 
@@ -26,10 +27,14 @@ def confirmOrder(request):
 			order = form.save()
 			#Update stock and clear shoppingcart
 			_shoppingcart = ShoppingCart(request)
-			#TODO: OrderLine ????
+			
+			for item in _shoppingcart:
+				OrderLine(order = order, product = item['product'], units = item['units'], pricePerUnit = item['price'])
+			
 			_shoppingcart.updateStock()
 			_shoppingcart.clear()
 			id = order.id
 		else:
 			id = None
 	return render(request, 'placeorder/confirmOrder.html', {'order_id': id })
+

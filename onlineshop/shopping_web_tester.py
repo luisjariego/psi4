@@ -23,17 +23,15 @@ except:
 #from shop.models import Product
 
 class onLineShopTester(unittest.TestCase):
-    POPULATE      = False # set to True if you  want to populate the database
+    POPULATE      = True # set to True if you  want to populate the database
     ADDPRODUCT    = True # set to True if you  want to add
                           # products to the shoppingcart
-    REMOVEPRODUCT = False # set to True if you  want to remove
+    REMOVEPRODUCT = True # set to True if you  want to remove
                           # products from the shoppingcart
-    CHECKOUT      = False # press checkout botton
-    PLACEORDER    = False # place order. The END ;-)
+    CHECKOUT      = True # press checkout botton
+    PLACEORDER    = True # place order. The END ;-)
     username    = "alumnodb"
     passwd      = "alumnodb"
-    #base_url    = "https://rocky-inlet-76734.herokuapp.com/"
-    #base_url    = "https://pure-bayou-13155.herokuapp.com/"
     #base_url     = "https://quiet-scrubland-14247.herokuapp.com/"
     base_url = "http://127.0.0.1:8000"
     admin_url    = base_url + "/admin/"
