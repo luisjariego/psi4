@@ -35,9 +35,9 @@ class onLineShopTester(unittest.TestCase):
     #base_url     = "https://quiet-scrubland-14247.herokuapp.com/"
     base_url = "http://127.0.0.1:8000"
     admin_url    = base_url + "/admin/"
-    shoppingcart_url = base_url + "shoppingcart/list/"
-    create_order_url      = base_url + "placeorder/create_order/"
-    confirm_order_url = base_url + "placeorder/confirm_order/"
+    shoppingcart_url = base_url + "/cart/"
+    create_order_url      = base_url + "/orders/create_order/"
+    confirm_order_url = base_url + "/orders/confirm_order/"
     addCategoryPath = "shop/category/add/"
     addProductPath  = "shop/product/add/"
     catList = ["Microwave ovens","Washing machines","Refrigerators"]
@@ -139,7 +139,8 @@ class onLineShopTester(unittest.TestCase):
         """units as a list"""
         select = Select(self.driver.find_element_by_id('id_units'))
         select.select_by_visible_text(str(units))
-        self.find_element_by_xpath('//*[@id="content"]/div/form/input[3]')
+        #self.find_element_by_xpath('//*[@id="content"]/div/form/input[3]')
+        self.find_element_by_xpath('//form/input[3]')
         self.assertEqual(self.driver.current_url, self.shoppingcart_url)
 
     def removeProduct(self, id, prodSlug, waitFor=1):

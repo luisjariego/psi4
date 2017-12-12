@@ -43,7 +43,7 @@
 						<input type="submit" name="submit" class="btn btn-secondary" value="Update"/>
 					</form>
 				</td>
-				<td><a href="{% url 'shoppingcart_remove' value.product.id %}"> <input class="btn" type="button" name="remove" value="Remove"></a></td>
+				<td><a id="Remove" href="{% url 'shoppingcart_remove' value.product.id %}">Remove</a></td>
 				<td>{{ value.price}}</td>
 				<td>{{ value.total_price}}</td>
 			</tr>
@@ -55,10 +55,15 @@
 			</tr>
 		</tbody>
 	</table>
+	<!--
 	<form action="{% url 'create_order' %}" method="post">
 		{% csrf_token %}
 		<a href="{% url 'product_list' %}"><input class="btn" type="button" name="shop" value="Continue shopping"></a>
 		<input class="btn btn-secondary" type="submit" name="buy" value="Confirm">
 	</form>
+-->
+	<a class="btn" href="{% url 'product_list' %}">Continue shopping</a>
+	<a class="btn btn-secondary" href= "{% url 'create_order' %}"> Checkout</a>
+
 
 {% endblock %}
