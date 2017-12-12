@@ -23,12 +23,6 @@ DEBUG = False
 class shoppingCartTest(TestCase):
     def setUp(self):
         self._client   = Client()
-        # self.clean_database()
-        # self.populate_data_base()
-
-    # def clean_database(self):
-    #     Product.objects.all().delete()
-    #     Category.objects.all().delete()
 
     @staticmethod
     def get_image_file(name='test.png', ext='png', size=(50, 50), color=(256, 0, 0)):
@@ -85,15 +79,11 @@ class shoppingCartTest(TestCase):
         _units = request.session[_shoppingcart.cartKey][str(prod.id)]['units']
 		
 		#THERE IS A SESSION VARIABLE CALLED "shoppingCart"
-        self.assertNotEqual(request.session['shoppingCart'], {}) # {} what returns if the variable does not exist
+        self.assertIn('shoppingCart', request.session) 
 		
 		#Remove the shoppingCart
         _shoppingcart.clear()
 		
         #THE SESSION VARIABLE "shoppingCart" HAS DISAPPEARED
-        try:
-            self.assertEqual(request.session['shoppingCart'], {})
-        #if the key does not exist, (this is what should happen)
-        except KeyError:
-            self.assertEqual(True, True)    
+        self.assertNotIn('shoppingCart', request.session)
 
