@@ -36,6 +36,6 @@ def confirmOrder(request):
 			_shoppingcart.clear()
 			id = order.id
 		else:
-			id = None
+			return redirect('create_order')
 	return render(request, 'placeorder/confirmOrder.html', {'order_id': id })
 
