@@ -92,7 +92,8 @@ class shoppingCartTest(TestCase):
 		
         #THE SESSION VARIABLE "shoppingCart" HAS DISAPPEARED
         try:
-        	print request.session['shoppingCart']
+            self.assertEqual(request.session['shoppingCart'], {})
+        #if the key does not exist, (this is what should happen)
         except KeyError:
-            self.assertEqual(True, True)
+            self.assertEqual(True, True)    
 
