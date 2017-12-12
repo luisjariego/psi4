@@ -28,9 +28,11 @@ def shoppingcart_add(request, product_id, update_units=False):
 		if form.is_valid():
 			if product is not None:
 				units = form.cleaned_data['units']
-				#update_units = form.cleaned_data['update']
 	
-		shoppingcart.addProduct(product=product, units=units, update_units=update_units)
+		if update_units==True and units==0:
+			shoppingcart.removeProduct(product=product)
+		else:
+			shoppingcart.addProduct(product=product, units=units, update_units=update_units)
 	return redirect('shoppingcart_list')
 
 def shoppingcart_update(request, product_id):

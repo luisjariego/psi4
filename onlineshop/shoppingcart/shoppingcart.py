@@ -19,10 +19,15 @@ class ShoppingCart(object):
 				if update_units==True:
 					self.cart[product_id]['units'] = units
 				else:
-					self.cart[product_id]['units'] += units
+					if (self.cart[product_id]['units'] + units) > product.stock:
+						self.cart[product_id]['units'] = product.stock
+					else:
+						self.cart[product_id]['units'] += units
 			else:
 				self.cart[product_id] = {'units': units, 'price': str(product.price),
 										'prodName': product.prodName, 'total_price': str(units * product.price)} #'image': product.image
+		elif units>product.stock:
+			self.cart[product_id]['units'] = product.stock
 		self.saveCart()
 
 	def saveCart(self):
