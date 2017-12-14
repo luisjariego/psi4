@@ -52,7 +52,7 @@ class onLineShopTester(unittest.TestCase):
     PLACEORDER    = True # place order. The END ;-)
     username    = "alumnodb"
     passwd      = "alumnodb"
-    #base_url     = "https://quiet-scrubland-14247.herokuapp.com/"
+    #base_url     = "https://quiet-scrubland-14247.herokuapp.com"
     base_url = "http://127.0.0.1:8000"
     admin_url    = base_url + "/admin/"
     shoppingcart_url = base_url + "/cart/"
