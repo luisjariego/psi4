@@ -22,6 +22,26 @@ except:
 
 #from shop.models import Product
 
+
+
+#
+# This function checks the functionality of the whole project: shop, shoppingcart and orders
+#
+# IMPORTANT: THE CHROMEDRIVER PATH MUST BE MODIFIED PROPERLY.
+#             (the chromedirver will not be submited as it is too large)
+#
+#
+# Several additional changes have been made:
+#   1. The urls: slugify has been added to variables prodSlug1-4 in lines 233-237
+#                in order to match with our urls implementation (spaces were not allowed)
+#
+#   2. xPath: xPath is changed as it didnt fit with our html layout.
+#   3. counter: in line 216 the counter was set to 1, we changed it to 2.
+#               This is motivated by the fact that the tests introduces 1 stock for the
+#               first item, but then it tries to select two. This would cause an error 
+#               in our application as the test will not find an option to select 2 items.
+#
+# Author : David Nevado
 class onLineShopTester(unittest.TestCase):
     POPULATE      = True # set to True if you  want to populate the database
     ADDPRODUCT    = True # set to True if you  want to add
@@ -32,12 +52,12 @@ class onLineShopTester(unittest.TestCase):
     PLACEORDER    = True # place order. The END ;-)
     username    = "alumnodb"
     passwd      = "alumnodb"
-    base_url     = "https://quiet-scrubland-14247.herokuapp.com/"
-    #base_url = "http://127.0.0.1:8000/"
-    admin_url    = base_url + "admin/"
-    shoppingcart_url = base_url + "cart/"
-    create_order_url      = base_url + "orders/create_order/"
-    confirm_order_url = base_url + "orders/confirm_order/"
+    #base_url     = "https://quiet-scrubland-14247.herokuapp.com/"
+    base_url = "http://127.0.0.1:8000"
+    admin_url    = base_url + "/admin/"
+    shoppingcart_url = base_url + "/cart/"
+    create_order_url      = base_url + "/orders/create_order/"
+    confirm_order_url = base_url + "/orders/confirm_order/"
     addCategoryPath = "shop/category/add/"
     addProductPath  = "shop/product/add/"
     catList = ["Microwave ovens","Washing machines","Refrigerators"]

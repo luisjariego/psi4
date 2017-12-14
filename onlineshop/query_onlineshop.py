@@ -8,6 +8,11 @@ from django.core.files import File
 from shop.models import Category, Product
 import onlineshop.settings as settings
 
+#
+# Creates categories deals and bargins, and some 
+# products in them to test basic functionality
+# of the application
+# Author:  Luis Jariego
 def query():
     #1
 	catdeals = "deals"

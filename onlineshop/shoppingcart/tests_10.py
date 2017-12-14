@@ -51,6 +51,14 @@ class shoppingCartTest(TestCase):
 
         return p
 
+#
+# This function adds 2 products to the cart, then
+# it checks that the session variable has been created.
+#
+# Then the shoppingcart is cleared and the tests
+# check that the session varible is no longer set.
+#
+# Author: Luis Jariego
     def test(self):
         #CREATE SESSION
         price = 1.1

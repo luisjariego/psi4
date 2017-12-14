@@ -9,7 +9,13 @@ from shop.models import Category, Product
 from django.utils import timezone
 from django.template.defaultfilters import slugify
 import onlineshop.settings as settings
-
+#
+# This funcition populates the database for the application
+# locally with some appliances.
+# Images are taken from the images/ directory
+#
+# This funcion is not appropiate for populating in heroku!
+# Author: David Nevado
 def populate():
 	# First, we will create lists of dictionaries containing the products
 	# we want to add into each category.

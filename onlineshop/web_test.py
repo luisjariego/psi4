@@ -11,56 +11,9 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, os
 from collections import OrderedDict
 from loremipsum import get_paragraphs, get_sentences
-'''
-class onLineShopTester(unittest.TestCase):
-    username    = "alumnodb"
-    passwd      = "alumnodb"
-    #base_url    = "https://rocky-inlet-76734.herokuapp.com/"
-    base_url     = "http://127.0.0.1:8000/"
-    admin_url    = base_url + "admin/"
-    addCategoryPath = "shop/category/add/"
-    addProductPath  = "shop/product/add/"
-    catList = ["Microwave ovens","Washing machines","Refrigerators"]
-    washing_machines = ["Bosch WAQ 28468, LCD Display, A+++",
-                  "Beko WTE6511BW, 39L, A+++",
-                  "Balay 3TS976BA, A+++",
-                  "Siemens WM14Q468ES, Digital display, A+++",
-                  "Kenmore 28132 Top Load Washer in White",
-                  "Kenmore Elite 51993 Wide Pedestal Washer"]
-    microwaves = ["Microwave TAURUS 970.930",
-                  "Microwave TAURUS 970.930.jpg",
-                  "Samsung GE731 K microwave",
-                  "Whirlpool AMW 160 Grill",
-                  "Samsung MS11K3000AS Countertop Microwave",
-                  "Hamilton Beach 900W Microwave"]
-    refrigerators = ["Samsung Refrigerator in Stainless Steel"]
-    productDict = {"Microwave ovens":  microwaves, 
-        "Washing machines": washing_machines, 
-        "Refrigerators": refrigerators}
- catList     = ["Angels", "Butterflies", "Kokopelli"]
-    productDict = {catList[0]: ["angel-tattoo-art",
-                 "black-angel-tattoo",
-                 "male-angel-tattoo",
-                 "angel-tattoo-design-3",
-                 "cute-angel-design",
-                 "praying-angel-tattoo"],
-                   catList[1]: ["butterflies-tattoos",
-                 "butterfly-swirls-tattoo",
-                 "purple-butterfly-tattoo",
-                 "butterfly-stars-tat",
-                 "butterfly-tattoo-3",
-                 "yellow-butterfly-tattoo"],
-                  catList[2]: ["dancing-kokopelli",
-                 "kokopelli-dancing",
-                 "kokopelli",
-                 "kokopelli-music",
-                 "kokopelli-tattoo-5",
-                 "kokopelli-tattoo-design"]
-                }
-                
-    chromeDriver = "../ficheros_psi3/chromedriver"
-    imagesPath = "./static/"
-'''
+#
+# CHROMEDRIVER PATH MUST BE CHANGED PROPERTLY
+# Author: David Nevado
 class onLineShopTester(unittest.TestCase):
     username    = "alumnodb"
     passwd      = "alumnodb"
